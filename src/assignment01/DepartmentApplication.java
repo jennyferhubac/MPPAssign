@@ -2,6 +2,7 @@ package assignment01;
 
 import java.io.*;                 // for I/O
 import java.lang.Integer;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -57,11 +58,7 @@ public class DepartmentApplication
 		Course cs240 = new Course("cs240","datastructure",2, johnDoodle);
 		Course cs301 = new Course("cs301","Software engg",3, samHoward);
 		Course cs450 = new Course("cs450","Advanced architecture",5,frankMoore);
-		
-		StaffStudent jacobBlack = new StaffStudent("Jacob Black", "451-2233", 28, 3000, 3.4, LocalDate.of(2015, 10, 15) );
-		StaffStudent edwardCullen = new StaffStudent("Edward Cullen", "451-4365", 29, 2900, 3.7, LocalDate.of(2015, 12, 15) );
-		dept.addPerson(jacobBlack);
-		dept.addPerson(edwardCullen);
+
 		
 		johnDoodle.addCourse(cs201);
 		johnDoodle.addCourse(cs404);
@@ -85,6 +82,12 @@ public class DepartmentApplication
 		leeJohnson.addCourse(cs360);
 		leeJohnson.addCourse(cs240);
 		leeJohnson.addCourse(cs450);
+		
+		
+		StaffStudent jacobBlack = new StaffStudent("Jacob Black", "451-2233", 28, 3000, 3.4, LocalDate.of(2015, 10, 15) );
+		StaffStudent edwardCullen = new StaffStudent("Edward Cullen", "451-4365", 29, 2900, 3.7, LocalDate.of(2015, 12, 15) );
+		dept.addPerson(jacobBlack);
+		dept.addPerson(edwardCullen);
 		
 		jacobBlack.addCourse(cs404);
 		edwardCullen.addCourse(cs360);
@@ -117,7 +120,9 @@ public class DepartmentApplication
             case 'g':
                totsalary=dept.getTotalSalary();
                putText("Total sum of all salaries is:");
-               putText(String.valueOf(totsalary)+"\n");              
+               DecimalFormat dFormat = new DecimalFormat("####,###,###.00");
+               System.out.println("$" + dFormat.format(totsalary));
+               //putText(String.valueOf(totsalary)+"\n");              
                break;
             case 's':
                dept.showAllMembers();
@@ -127,7 +132,7 @@ public class DepartmentApplication
                break;
             case 'f':
                putText("Enter first letter of the faculty ");
-          	   putText("Frank Moore \n John Doodle \n Sam Howard");
+          	   putText("Frank Moore \nJohn Doodle \nSam Howard");
           	   
           	   int fchoice = getChar();
           	   switch(fchoice)

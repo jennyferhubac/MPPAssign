@@ -28,10 +28,21 @@ public class Department {
 			Faculty faculty = (Faculty)person;
 			totSalary = totSalary + faculty.getSalary();
 			}
-		else if(!(person instanceof Student))
+		else if((person instanceof Student))
 		{
-			Staff staff = (Staff)person;
-			totSalary = totSalary + staff.getSalary();
+			if(person instanceof StaffStudent)
+			{
+				StaffStudent staffStudent = (StaffStudent)person;
+				totSalary = totSalary + staffStudent.getSalary();
+			}
+		}
+		else
+		{
+			if(person instanceof Staff)
+			{
+				Staff staff = (Staff)person;
+				totSalary = totSalary + staff.getSalary();
+			}
 		}
 		});
 		
@@ -49,7 +60,7 @@ public class Department {
 			if(person instanceof Faculty)
 			{
 				Faculty faculty = (Faculty)person;
-				System.out.println("Name: " + faculty.getName() + " Total Units: " + faculty.getTotalUnits());
+				System.out.println("Name: " + faculty.getName() + "\nTotal Units: " + faculty.getTotalUnits());
 			}
 			});
 	}
@@ -65,7 +76,8 @@ public class Department {
 		
 		for(Course course : alCourse)
 		{
-			System.out.println("Course: " + course.getTitle() +" \n");
+			System.out.println("Course: " + course.getTitle());
+			System.out.println("---------------------");
 			for(Person person : alPerson)
 			{
 				if(person instanceof Student)

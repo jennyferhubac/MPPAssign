@@ -67,7 +67,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", phone=" + phone + ", age=" + age + ", type=" + this.getClass().getSimpleName() + "]";
+		return "Name: " + name + "\nPhone: " + phone + "\nAge: " + age + "\nType: " + this.getClass().getSimpleName() + "\n";
 	}
 	
 	
