@@ -84,7 +84,7 @@ public class DepartmentApplication
 		leeJohnson.addCourse(cs450);
 		
 		
-		StaffStudent jacobBlack = new StaffStudent("Jacob Black", "451-2233", 28, 3000, 3.4, LocalDate.of(2015, 10, 15) );
+		StaffStudent jacobBlack = new StaffStudent("Jacob Black", "451-2233", 28, 3000.75, 3.4, LocalDate.of(2015, 10, 15) );
 		StaffStudent edwardCullen = new StaffStudent("Edward Cullen", "451-4365", 29, 2900, 3.7, LocalDate.of(2015, 12, 15) );
 		dept.addPerson(jacobBlack);
 		dept.addPerson(edwardCullen);
