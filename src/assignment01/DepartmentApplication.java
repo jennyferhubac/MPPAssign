@@ -1,7 +1,8 @@
 package assignment01;
 
 import java.io.*;                 // for I/O
-import java.lang.Integer;  
+import java.lang.Integer;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -57,6 +58,11 @@ public class DepartmentApplication
 		Course cs301 = new Course("cs301","Software engg",3, samHoward);
 		Course cs450 = new Course("cs450","Advanced architecture",5,frankMoore);
 		
+		StaffStudent jacobBlack = new StaffStudent("Jacob Black", "451-2233", 28, 3000, 3.4, LocalDate.of(2015, 10, 15) );
+		StaffStudent edwardCullen = new StaffStudent("Edward Cullen", "451-4365", 29, 2900, 3.7, LocalDate.of(2015, 12, 15) );
+		dept.addPerson(jacobBlack);
+		dept.addPerson(edwardCullen);
+		
 		johnDoodle.addCourse(cs201);
 		johnDoodle.addCourse(cs404);
 		johnDoodle.addCourse(cs240);
@@ -79,6 +85,9 @@ public class DepartmentApplication
 		leeJohnson.addCourse(cs360);
 		leeJohnson.addCourse(cs240);
 		leeJohnson.addCourse(cs450);
+		
+		jacobBlack.addCourse(cs404);
+		edwardCullen.addCourse(cs360);
 		
 		/*
 		 * The above course objects will go inside either
