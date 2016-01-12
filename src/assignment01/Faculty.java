@@ -17,7 +17,10 @@ public class Faculty extends Person{
 	public int getTotalUnits()
 	{
 		int totUnits = 0;
-		
+		for(Course course : alCourse)
+		{
+			totUnits = totUnits + course.getUnits();
+		}
 		return totUnits;
 	}
 
@@ -32,17 +35,7 @@ public class Faculty extends Person{
 	
 	public ArrayList<Course> getAllCoursesByFaculty()
 	{
-		ArrayList<Course> arrCourses = new ArrayList<Course>();
-		
-		for(Course course : alCourse)
-		{
-			if(course.getFaculty() == faculty)
-			{
-				arrCourses.add(course);
-			}
-		}
-		
-		return arrCourses;
+		return alCourse;
 	}
 	
 

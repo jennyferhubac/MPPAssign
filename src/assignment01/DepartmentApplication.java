@@ -57,6 +57,29 @@ public class DepartmentApplication
 		Course cs301 = new Course("cs301","Software engg",3, samHoward);
 		Course cs450 = new Course("cs450","Advanced architecture",5,frankMoore);
 		
+		johnDoodle.addCourse(cs201);
+		johnDoodle.addCourse(cs404);
+		johnDoodle.addCourse(cs240);
+		
+		samHoward.addCourse(cs360);
+		samHoward.addCourse(cs301);
+		
+		frankMoore.addCourse(cs450);
+		
+		johnDoe.addCourse(cs201);
+		johnDoe.addCourse(cs360);
+		johnDoe.addCourse(cs404);
+		johnDoe.addCourse(cs301);
+		
+		maryJones.addCourse(cs201);
+		maryJones.addCourse(cs404);
+		maryJones.addCourse(cs450);
+		
+		leeJohnson.addCourse(cs201);
+		leeJohnson.addCourse(cs360);
+		leeJohnson.addCourse(cs240);
+		leeJohnson.addCourse(cs450);
+		
 		/*
 		 * The above course objects will go inside either
 		 * a faculty object, or a student object.  Not all of the course
@@ -78,7 +101,7 @@ public class DepartmentApplication
       while(true)
          {
          putText("Enter first letter of ");
-         putText("getTotalSalary, showAllMembers, unitsPerFaculty or quit : ");
+         putText("getTotalSalary, showAllMembers, unitsPerFaculty, faculty student list or quit : ");
          int choice = getChar();
          switch(choice)
             {
@@ -92,6 +115,26 @@ public class DepartmentApplication
                break;
             case 'u':
                dept.unitsPerFaculty();
+               break;
+            case 'f':
+               putText("Enter first letter of the faculty ");
+          	   putText("Frank Moore \n John Doodle \n Sam Howard");
+          	   
+          	   int fchoice = getChar();
+          	   switch(fchoice)
+          	   {
+          	   case 'F': 
+          		  dept.printAllStudentsByFaculty(frankMoore);
+          		  break;
+          	   case 'J':
+          		  dept.printAllStudentsByFaculty(johnDoodle);
+          		  break;
+          	   case 'S':
+          		   dept.printAllStudentsByFaculty(samHoward);
+          		   break;
+          	   default:
+          		   break;          	   
+          	   }
                break;
             case 'q': return;
             default:

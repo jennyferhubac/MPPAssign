@@ -61,10 +61,11 @@ public class Department {
 	
 	public void printAllStudentsByFaculty(Faculty faculty)
 	{
-		ArrayList<Course> alCourse = getAllCoursesByFaculty(faculty);
+		ArrayList<Course> alCourse = faculty.getAllCoursesByFaculty();
 		
 		for(Course course : alCourse)
 		{
+			System.out.println("Course: " + course.getTitle() +" \n");
 			for(Person person : alPerson)
 			{
 				if(person instanceof Student)

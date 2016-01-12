@@ -20,7 +20,12 @@ public class Student extends Person{
 
 	public int getTotalUnits()
 	{
-		return 0;
+		int totUnit = 0;
+		for(Course course : alCourse)
+		{
+			totUnit = totUnit + course.getUnits();
+		}
+		return totUnit;
 	}
 	
 	public void addCourse(Course course)
