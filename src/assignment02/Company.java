@@ -5,6 +5,7 @@ import java.util.*;
 public class Company {
 	private String name;
 	private ArrayList<Department> arrDepartment;
+	final Department execDept = new Department("Executive", "34 Raffles City");
 	
 	Company(String name)
 	{
@@ -48,6 +49,44 @@ public class Company {
 	public void addDepartment(Department department)
 	{
 		arrDepartment.add(department);
+	}
+	
+	public void printReportingHierarchy()
+	{
+		getTopExecutive().print();
+		System.out.println("\n===================================================\n");
+		if(arrDepartment.size() > 0)
+		{
+			for(Department dept : arrDepartment)
+			{
+				if(!dept.equals(execDept))
+					dept.printReportingHierarchy();
+			}
+		}
+	}
+	
+	public Position getTopExecutive()
+	{
+		Position topExec = new Position();
+		boolean isTopExecFound = false;
+		
+		if(arrDepartment.size() > 0)
+		{
+			for(Department dept : arrDepartment)
+			{
+				if(dept.equals(execDept))
+				{
+					topExec = dept.getDepartmentHead();
+					isTopExecFound = true;
+					break;
+				}
+			}
+		}
+		
+		if(!isTopExecFound)
+			topExec = null;
+		
+		return topExec;
 	}
 
 }

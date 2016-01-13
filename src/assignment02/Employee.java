@@ -61,12 +61,12 @@ public class Employee {
 	public void print()
 	{
 		//DateTimeFormatter dtFmt = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		System.out.println("Employee ID: " + employeeID);
-		System.out.println("Employee Name: " + firstName + " " + middleInitial + " " + lastName);
-		System.out.println("Date of Birth: " + birthDate.toString());
-		System.out.println("SSN: " + SSN);
-		System.out.println("Salary: " + salary);
-		System.out.println("Position: " + position.getTitle() + "\n");
+		System.out.println("\t\t\tEmployee ID: " + employeeID);
+		System.out.println("\t\t\tEmployee Name: " + firstName + " " + middleInitial + " " + lastName);
+		System.out.println("\t\t\tDate of Birth: " + birthDate.toString());
+		System.out.println("\t\t\tSSN: " + SSN);
+		System.out.printf("\t\t\tSalary: $%,.2f \n", salary);
+		System.out.println("\t\t\tPosition: " + position.getTitle() + "\n");
 		
 	}
 

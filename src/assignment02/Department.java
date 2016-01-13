@@ -85,5 +85,38 @@ public class Department {
 	{
 		arrPosition.add(position);
 	}
+	
+	public Position getDepartmentHead()
+	{
+		Position deptHead = new Position();
+		boolean isDeptHeadFound = false;
+		
+		if(arrPosition.size() > 0)
+		{
+			for(Position pos : arrPosition)
+			{
+				if(pos.isSuperior())
+				{
+					deptHead = pos;
+					isDeptHeadFound = true;
+					break;
+				}
+			}
+		}
+		
+		if(!isDeptHeadFound)
+			deptHead = null;
+		
+		return deptHead;
+	}
+	
+	public void printReportingHierarchy()
+	{
+		System.out.println("Department Name: " + name);
+		System.out.println("----------------------------------------\n");
+		
+		Position deptHead = getDepartmentHead();
+		deptHead.printDownLine();
+	}
 
 }
