@@ -19,8 +19,13 @@ public class CompanyApplication {
 		company.addDepartment(salesDept);
 		company.addDepartment(execDept);
 		
+		itDept.setCompany(company);
+		salesDept.setCompany(company);
+		execDept.setCompany(company);
+		
 		Position topExec = new Position("Top Executive", "A Top Executive is the CEO of the company.");
 		topExec.setSuperior(true);
+		topExec.setDepartment(execDept);
 		
 		execDept.addPostion(topExec);
 		
@@ -40,6 +45,10 @@ public class CompanyApplication {
 		itDept.addPostion(consultant);
 		itDept.addPostion(seniorAnalyst);
 		
+		seniorAnalyst.setDepartment(itDept);
+		consultant.setDepartment(itDept);
+		itManager.setDepartment(itDept);
+		
 		Employee markCheng = new Employee("1000-0001", "Mark", "U", "Cheng", LocalDate.of(1982, 9, 24), "456-5678", 10500.00, itManager);
 		Employee cyDavid = new Employee("1000-0002", "Cyrus", "C", "David", LocalDate.of(1982, 10, 18), "477-3225", 6500.00, consultant);
 		
@@ -57,6 +66,10 @@ public class CompanyApplication {
 		salesDept.addPostion(salesManager);
 		salesDept.addPostion(salesPerson);
 		salesDept.addPostion(assistantSales);
+		
+		salesManager.setDepartment(salesDept);
+		salesPerson.setDepartment(salesDept);
+		assistantSales.setDepartment(salesDept);
 		
 		Employee amandaPaige = new Employee("1000-0002", "Amanda", "C", "Paige", LocalDate.of(1980, 12, 18), "451-3335", 11500.85, salesManager);
 		Employee lizaSmith = new Employee("1000-0002", "Liza", "M", "Smith", LocalDate.of(1985, 9, 18), "453-3348", 4675.00, salesPerson);

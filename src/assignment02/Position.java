@@ -4,6 +4,9 @@ import java.util.*;
 public class Position {
 	private String title;
 	private String description;
+	
+	private Department department;
+
 	private ArrayList<Employee> arrEmployee;
 	private ArrayList<Position> arrInferiorPosition;
 	private boolean isSuperior = false;
@@ -35,6 +38,14 @@ public class Position {
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	
 	public void addEmployee(Employee employee)

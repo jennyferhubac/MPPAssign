@@ -6,6 +6,16 @@ public class Department {
 	private String name;
 	private String location;
 	
+	private Company company;
+	
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	private ArrayList<Position> arrPosition;
 	
 	Department(String name, String location)
