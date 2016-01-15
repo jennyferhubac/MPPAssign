@@ -9,4 +9,13 @@ public class Orderline {
 	private Date shipDate;
 	private double  points;
 
+	public double computePrice()
+	{
+		return 0.0;
+	}
+	
+	public double computePoints()
+	{
+		return 0.0;
+	}
 }
