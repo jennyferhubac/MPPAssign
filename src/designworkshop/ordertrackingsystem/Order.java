@@ -51,6 +51,8 @@ public class Order {
 			orderPrice = orderPrice + ordline.computePrice();
 		}
 		
+		orderPrice = addDiscount(orderPrice);
+		
 		return orderPrice;
 	}
 
@@ -94,12 +96,14 @@ public class Order {
 	public void print()
 	{
 		SimpleDateFormat dtFmt = new SimpleDateFormat("yyyy-mm-dd");
+		System.out.println("\n\n");
+		System.out.println("=====================================================\n");
 		System.out.println("Order Number: " + orderNumber + "\tOrder Date: " + dtFmt.format(orderDate));
 		System.out.printf("Total Order Price:\t $%,.2f \n", getOrderPrice());
 		System.out.println("Order Points:\t" + getOrderPoints());
-		System.out.println("Customer's accumulated points:\t" + getCustomerPoints());
 		System.out.println("Order Status:\t" + getStatus());
 		System.out.println("=====================================================\n");
+		System.out.println("Item\t\tQty\tPrice\tShipping Status");
 		for(Orderline ordline : arrOrderline)
 		{
 			ordline.print();
@@ -132,11 +136,22 @@ public class Order {
 	
 	public double getCustomerPoints()
 	{
-		return customer.getPoints() + getOrderPoints();
+		return customer.getAccumulatedPoints() + getOrderPoints();
 	}
 	
 	public void setCustomerPoints(double points)
 	{
 		this.points = points;
+	}
+	
+	private double addDiscount(double ordPrice)
+	{
+		if(getCustomerPoints() >= 25)
+		{
+			ordPrice = ordPrice - (ordPrice * 0.4);
+			customer.setPoints(0);
+		}
+		
+		return ordPrice;
 	}
 }

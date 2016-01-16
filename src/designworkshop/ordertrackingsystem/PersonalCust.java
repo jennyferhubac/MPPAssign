@@ -43,13 +43,16 @@ public class PersonalCust extends ACustomer{
 	
 	public void print()
 	{
+		System.out.println("------------------------------------------------------");
 		System.out.println("Customer type:\tPersonal Customer");
 		System.out.println("Name:\t" + this.getName());
 		System.out.println("Address:\t" + this.getAddress());
 		System.out.println("Phone:\t" + this.getPhone());
 		System.out.println("Credit number:\t" + this.getCreditCardNum());
 		System.out.println("Credit Rating:\t" + this.getCreditRating());
-		System.out.println("=====================================================\n");
+		System.out.println("Payment Method:\t" + this.getPaymentMethod().toString());
+		System.out.println("Accumulated points:\t" + this.getAccumulatedPoints());
+		System.out.println("------------------------------------------------------\n");
 	}
 	
 	public void printOrders()
@@ -70,10 +73,46 @@ public class PersonalCust extends ACustomer{
 		double totPoints = 0;
 		for(Order order : arrOrders)
 		{
-			totPoints = totPoints + order.getOrderPoints();
+			if(totPoints <= 25)
+			{
+				totPoints = totPoints + order.getOrderPoints();
+				this.setPoints(totPoints);
+			}
+			else
+			{
+				totPoints = 0;
+				totPoints = totPoints + order.getOrderPoints();
+				this.setPoints(0);
+			}
+		}
+		
+		//double check if points greater than 25 
+		//normally if last order has accumulated more than 25 points
+		
+		if(totPoints <= 25)
+		{
+			this.setPoints(totPoints);
+		}
+		else
+		{
+			totPoints = 0;
+			this.setPoints(0);
 		}
 		
 		return totPoints;
+		
+	}
+	
+	public PaymentMethod getPaymentMethod()
+	{
+		if(creditRating == CreditRating.POOR)
+		{
+			return PaymentMethod.PREPAID;
+		}
+		else
+		{
+			return PaymentMethod.POSTPAID;
+		}
 	}
 
 }

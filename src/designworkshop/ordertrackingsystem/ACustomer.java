@@ -28,6 +28,8 @@ public abstract void printOrders();
 
 public abstract double getAccumulatedPoints();
 
+public abstract PaymentMethod getPaymentMethod();
+
 public String getName() {
 	return name;
 }
