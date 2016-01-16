@@ -1,6 +1,6 @@
 package designworkshop.ordertrackingsystem;
 
-public abstract class ACustomer {
+public abstract class ACustomer implements ICustomer{
 private String name;
 private String address;
 private String phone;
@@ -20,7 +20,13 @@ public ACustomer(String name, String address, String phone)
 	points = 0;
 }
 
-abstract CreditRating getCreditRating();
+public abstract CreditRating getCreditRating();
+
+public abstract void print();
+
+public abstract void printOrders();
+
+public abstract double getAccumulatedPoints();
 
 public String getName() {
 	return name;
