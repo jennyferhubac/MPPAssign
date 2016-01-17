@@ -1,5 +1,8 @@
 package designworkshop.ordertrackingsystem;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CorporateCust extends ACustomer{
@@ -8,11 +11,6 @@ public class CorporateCust extends ACustomer{
 	private double creditLimit;
 	
 	ArrayList<Order> arrOrders;
-	
-	Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-	Date firstDateOfPreviousMonth;
-	Date lastDateOfPreviousMonth;
-
 	 
 	CorporateCust(String name, String address, String phone)
 	{
@@ -41,33 +39,58 @@ public class CorporateCust extends ACustomer{
 	
 	public void generateMonthlyBill()
 	{
-		/*
+		//current month		
+		/*Collections.sort(arrOrders, new Comparator<Order>() {
+		    @Override
+		    public int compare(Order or1, Order or2) {
+		        return or1.getOrderDate().compareTo(or2.getOrderDate());
+		    }
+		}); */
+		
+		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		
+		Date today = new Date();  
+
+        //Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(today);  
+        
+        calendar.add(Calendar.MONTH, 0);
+        calendar.set(Calendar.DAY_OF_MONTH, 1); 
+        Date firstDayOfMonth = calendar.getTime();
+
+        calendar.add(Calendar.MONTH, 1);  
+        calendar.set(Calendar.DAY_OF_MONTH, 1);  
+        
+        calendar.add(Calendar.DATE, -1);  
+
+        Date lastDayOfMonth = calendar.getTime();  
+
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+        System.out.println("Today            : " + sdf.format(today));  
+        System.out.println("First Day of Month: " + sdf.format(firstDayOfMonth)); 
+        System.out.println("Last Day of Month: " + sdf.format(lastDayOfMonth)); 
+        
+        System.out.println("Billing Period: " + sdf.format(firstDayOfMonth) + " to " + sdf.format(lastDayOfMonth));
+        System.out.println("========================================================\n");
 		double totalOrder = 0.0;
 		for(Order order : arrOrders)
 		{
 			if(!order.isPrepaid())
 			{
-			if(!order.getOrderDate().before(firstDateOfPreviousMonth) && order.getOrderDate().after(lastDateOfPreviousMonth))
+			if(order.getOrderDate().after(firstDayOfMonth) && order.getOrderDate().before(lastDayOfMonth))
 			{
 				order.print();
 				for(Orderline ordline : order.getArrOrderline())
 				{
-					ordline.print();
 					totalOrder = totalOrder + ordline.computePrice();
 				}
 			}
 			}
 		}
-		System.out.println("=====================================================");
-		System.out.printf("\n GRAND TOTAL:\t $%,.2f" + totalOrder);
-		*/
+		System.out.println("\n=====================================================");
+		System.out.printf("\n GRAND TOTAL:\t $%,.2f", totalOrder);
 		
-		Collections.sort(arrOrders, new Comparator<Order>() {
-		    @Override
-		    public int compare(Order or1, Order or2) {
-		        return or1.getOrderDate().compareTo(or2.getOrderDate());
-		    }
-		}); 
+		
 	}
 	
 	public void print()
@@ -79,24 +102,9 @@ public class CorporateCust extends ACustomer{
 		System.out.println("Phone:\t" + this.getPhone());
 		System.out.println("Credit limit:\t" + this.getCreditLimit());
 		System.out.println("Credit Rating:\t" + this.getCreditRating());
-		System.out.println("Payment Method:\t" + this.getPaymentMethod().toString());
+		System.out.println("Payment Method:\t" + this.getPaymentMethod().getPaymentMethod());
 		System.out.println("Accumulated points:\t" + this.getAccumulatedPoints());
 		System.out.println("------------------------------------------------------\n");
-	}
-	
-	private void setPreviousMonth()
-	{
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-
-		calendar.add(Calendar.MONTH, -1);
-		calendar.set(Calendar.DATE, 1);
-
-		firstDateOfPreviousMonth = calendar.getTime();
-
-		calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE)); // changed calendar to cal
-
-		lastDateOfPreviousMonth = calendar.getTime();
-		
 	}
 	
 	public void printOrders()
@@ -154,7 +162,17 @@ public class CorporateCust extends ACustomer{
 		}
 		else
 		{
-			return PaymentMethod.POSTPAID;
+			if(arrOrders.size() > 0)
+			{
+				if(arrOrders.get(arrOrders.size()-1).getOrderPrice() > creditLimit)
+					return PaymentMethod.PREPAID;
+				else
+					return PaymentMethod.POSTPAID;
+			}
+			else
+			{
+				return PaymentMethod.POSTPAID;	
+			}
 		}
 	}
 }

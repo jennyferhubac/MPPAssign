@@ -35,6 +35,7 @@ public class OrderTrackingSystemApplication {
 		//PersonalCust jennyCust = new PersonalCust("Jennyfer", "Fairfield, IA", "641-451-3333", "1234 4567 8900");
 		
 		CorporateCust jennyCust = new CorporateCust("Jennyfer", "Fairfield, IA", "641-451-3333");
+		jennyCust.setCreditLimit(500.00);
 		
 		//----------------------------------------------
 		//Order #1
@@ -54,6 +55,8 @@ public class OrderTrackingSystemApplication {
 		
 		jenOrd1.addOrderline(ord1);
 		jenOrd1.addOrderline(ord2);
+		
+		jennyCust.getPaymentMethod();
 		
 		//------------------------------------------------
 		
@@ -78,6 +81,8 @@ public class OrderTrackingSystemApplication {
 		
 		ord5.setStatus("OUT OF STOCK");
 		
+		jennyCust.getPaymentMethod();
+		
 		//------------------------------------------------
 		
 		Order jenOrd3 = new Order("001-003", sdf.parse("2016-01-14"));
@@ -96,6 +101,8 @@ public class OrderTrackingSystemApplication {
 		ord6.setStatus("OUT OF STOCK");
 		ord7.setStatus("OUT OF STOCK");
 		ord8.setStatus("OUT OF STOCK");
+		
+		jennyCust.getPaymentMethod();
 		
 		//------------------------------------------------
 		//print
