@@ -7,6 +7,8 @@ public class Libary {
 	static ArrayList<Member> arrMember = new ArrayList<Member>();
 	static ArrayList<ItemCopy> arrItemCopy = new ArrayList<ItemCopy>();
 	static ArrayList<AItem> arrItem = new ArrayList<AItem>();
+	static ArrayList<Loan> arrLoan = new ArrayList<Loan>();
+	static ArrayList<Reservation> arrReserve = new ArrayList<Reservation>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -226,6 +228,11 @@ public class Libary {
 			member.Borrow(loan);
 			System.out.println("Successful loan.");
 			System.out.println("Please return " + itemCopy.getItem().getTitle() + " after " + itemCopy.getItem().getLimit() + " day(s)");
+			arrLoan.add(loan);
+		}
+		else
+		{
+			System.out.println("Book loan was not successful.  Please try again later.");
 		}
 		
 		
@@ -243,7 +250,8 @@ public class Libary {
 	
 	private static void getLoanHistory(Member member)
 	{
-		
+		System.out.println(member.getName() +"'s" + "Loan History");
+		System.out.println("================================================================================");
 	}
 	
 	private static void getReservationHistory(Member member)
