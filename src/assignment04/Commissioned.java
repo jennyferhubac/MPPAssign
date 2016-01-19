@@ -48,7 +48,8 @@ public class Commissioned extends Employee{
 		
 		for(Order order : arrOrder)
 		{
-			if(dr.getStartDate().isBefore(order.getOrderDate()) && dr.getEndDate().isAfter(order.getOrderDate()))
+			//if(dr.getStartDate().isBefore(order.getOrderDate()) && dr.getEndDate().isAfter(order.getOrderDate()))
+			if(dr.isinRange(order.getOrderDate()))
 			{
 				totOrder = totOrder + order.getOrderAmount();
 			}

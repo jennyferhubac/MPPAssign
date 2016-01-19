@@ -46,5 +46,10 @@ public class Loan {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
+	
+	public void print()
+	{
+	
+	}
 
 }

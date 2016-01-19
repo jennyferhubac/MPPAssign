@@ -25,7 +25,7 @@ public class DateRange {
 		{
 			isRange = true;
 		}
-		return false;
+		return isRange;
 	}
 	
 	public String toString()
