@@ -1,5 +1,7 @@
 package assignment04;
 
+import java.time.*;
+
 public abstract class Employee {
 	private String empId;
 	private String name;
@@ -33,10 +35,25 @@ public abstract class Employee {
 	
 	public void print()
 	{
+		System.out.println("Employee ID:\t" + empId);
+		System.out.print("Name:\t" + name);
+	}
+	
+	
+	public Paycheck calcCompensation(int month, int year)
+	{
+		LocalDate startDate = LocalDate.of(year, month, 1);
+		LocalDate endDate = DateRange.getLastDayOfMonth(startDate);
+		
+		DateRange dr = new DateRange(startDate, endDate);
+		
+		Paycheck payCheck = new Paycheck(calcGrossPay(dr), Tax.FICA.getTaxRate(),
+				Tax.STATE.getTaxRate(), Tax.LOCAL.getTaxRate(), Tax.MEDICARE.getTaxRate(),
+				Tax.SOCIAL_SECURITY.getTaxRate(),dr);
+		
+		return payCheck;
 		
 	}
 	
-	//public Paycheck calcCompensation()
-	
-
+	public abstract double calcGrossPay(DateRange dr);
 }
