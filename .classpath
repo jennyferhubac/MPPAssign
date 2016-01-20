@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/MPP/JDBC_Lab_example/MS-Access_jar_Files/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/MPP/JDBC_Lab_example/MS-Access_jar_Files/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/MPP/JDBC_Lab_example/MS-Access_jar_Files/hsqldb.jar"/>
+	<classpathentry kind="lib" path="D:/MPP/JDBC_Lab_example/MS-Access_jar_Files/jackcess-2.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/MPP/JDBC_Lab_example/MS-Access_jar_Files/ucanaccess-2.0.9.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
