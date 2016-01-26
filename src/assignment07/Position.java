@@ -1,7 +1,7 @@
 package assignment07;
 
 import java.util.*;
-public class Position {
+public class Position implements Cloneable{
 	private String title;
 	private String description;
 	
@@ -127,6 +127,11 @@ public class Position {
 	public ArrayList<Position> getArrInferiorPosition() {
 		return arrInferiorPosition;
 	}
+	
+
+	public void setArrInferiorPosition(ArrayList<Position> arrInferiorPosition) {
+		this.arrInferiorPosition = arrInferiorPosition;
+	}
 
 	@Override
 	public int hashCode() {
@@ -183,12 +188,22 @@ public class Position {
 	@Override
 	public String toString()
 	{
-		return "";
+		return "Title:      " + title + "\n" +
+	           "Description:" + description + "\n" +
+	           "Department: " + department.getName() + "\n";
 	}
 
 	
-	
-	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Position positionCloned = (Position) super.clone();
+		//positionCloned.setEmployee((Employee)positionCloned.getEmployee().clone());
+		//positionCloned.setDepartment((Department)positionCloned.getDepartment().clone());
+		//positionCloned.setArrInferiorPosition((ArrayList<Position>) positionCloned.getArrInferiorPosition().clone());
+		return positionCloned;
+		
+	}
+
 
 
 

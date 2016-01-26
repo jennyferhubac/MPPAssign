@@ -2,7 +2,7 @@ package assignment07;
 
 import java.util.*;
 
-public class Department {
+public class Department implements Cloneable{
 	private String name;
 	private String location;
 	
@@ -163,7 +163,17 @@ public class Department {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Department: " + name + "\n" +
+			   "Location: " + location + "\n";
+	}
 
 	
-
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }

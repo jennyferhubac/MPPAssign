@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class Employee {
+public class Employee implements Cloneable{
 	private String employeeID;
 	private String firstName;
 	private String middleInitial;
@@ -61,6 +61,38 @@ public class Employee {
 
 	public Position getPosition() {
 		return position;
+	}
+	
+	public void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setMiddleInitial(String middleInitial) {
+		this.middleInitial = middleInitial;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public void setSSN(String sSN) {
+		SSN = sSN;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 	public void print()
@@ -148,9 +180,17 @@ public class Employee {
 			   "Name:    " + firstName + " " + middleInitial + " " + lastName + "\n" +
 			   "DOB:     " + birthDate.toString() + "\n" +
 			   "SSN:     " + SSN + "\n" +
-			   "Salary:$ " + salary + "\n" +
-			   "Position:" + position.getTitle();
+			   "Salary:  $" + String.format("%,.2f", salary) + "\n" +
+			   "Position:" + position.getTitle() + "\n";
 	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		Employee empCloned = (Employee) super.clone();
+		empCloned.setPosition((Position)empCloned.getPosition().clone());
+		return empCloned;
+	}
+	
 	
 	
 }

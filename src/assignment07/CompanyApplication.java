@@ -8,7 +8,7 @@ import java.util.*;
 
 public class CompanyApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		// TODO Auto-generated method stub
 		
 		Company comp1 = new Company("Avanade Asia Pte Ltd");
@@ -21,7 +21,7 @@ public class CompanyApplication {
 		Position pos2 = new Position("Consultant","Developer");
 		
 		Employee emp1 = new Employee("001", "Cyrus", "C", "David",LocalDate.of(1982, 10, 18), "477-3225", 3500.00, pos1);
-		Employee emp2 = new Employee("001", "Cyrus", "C", "David",LocalDate.of(1982, 10, 18), "477-3225", 3500.00, pos1);
+		Employee emp2 = new Employee("001", "Marky", "C", "Cheng",LocalDate.of(1982, 9, 24), "889-3225", 4500.00, pos2);
 		//Employee(String employeeID, String firstName, String middleInitial, String lastName, LocalDate birthDate, String SSN, double salary, Position position)
 		//Employee cyDavid = new Employee("1000-0002", "Cyrus", "C", "David", LocalDate.of(1982, 10, 18), "477-3225", 6500.00, consultant);
 	
@@ -43,10 +43,26 @@ public class CompanyApplication {
 		//System.out.println(emp1.hashCode());
 		//System.out.println(emp2.hashCode());
 		
-		System.out.println(dep1.hashCode());
-		System.out.println(dep2.hashCode());
+		//System.out.println(dep1.hashCode());
+		//System.out.println(dep2.hashCode());
 		
-		System.out.println(emp1.toString());
+		//System.out.println(emp1.toString());
+		
+		//System.out.println(dep1);
+		//System.out.println(dep2);
+		
+		//System.out.println(pos1);
+		//System.out.println(pos2);
+		
+		System.out.println(emp1);
+		System.out.println(emp2);
+		
+		Employee emp1clone = (Employee)emp1.clone();
+		System.out.println(emp1clone);
+		
+		Employee emp2clone = (Employee)emp2.clone();
+		System.out.println(emp2clone);
+		
 	}
 
 }
