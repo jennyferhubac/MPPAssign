@@ -158,11 +158,10 @@ public static void main(String[] args)
    //Print out all of the Employee objects whose last name begins with the letter  ‘B’  
    //and change their first name and last name to be All capital letters.
    System.out.printf("%nEmployees whose last name begins with the letter 'B' in all caps:%n");
-   List<Employee> list2 =  list.stream()
-       .filter(lastnameStartsWithB)
-       .collect(Collectors.toList());
  
-   list2.stream().map(new Function<Employee,Employee>()
+   list.stream()
+   	   .filter(lastnameStartsWithB)
+   	   .map(new Function<Employee,Employee>()
    {
   		@Override
   		public Employee apply(Employee emp)
@@ -177,10 +176,8 @@ public static void main(String[] args)
    //Print out All of the employee objects, but if the last name begins with the letter  ‘B’,  
    //then capitalize all the letters in the last name.  
    
-   List<Employee> list3 = list;
-   
    System.out.printf("%nAll Employees objects but capitalize lastname if starts with 'B':%n");
-   list3.stream().map(new Function<Employee,Employee>()
+   list.stream().map(new Function<Employee,Employee>()
    {
   		@Override
   		public Employee apply(Employee emp)
@@ -206,10 +203,9 @@ public static void main(String[] args)
    //begins with the letter  ‘I’  in sorted order, and get rid of all the duplicates.  Print out only the last names.
    
    Predicate<Employee> lastnameStartsWithI = e -> e.getLastName().startsWith("I");
-   List<Employee> list4 = list;
    
    System.out.printf("%nAll Employees whose lastname starts with 'I':%n");
-   list4.stream()
+   list.stream()
         .filter(lastnameStartsWithI)
         .map(e -> e.getLastName())
         .distinct()
@@ -242,7 +238,7 @@ public static void main(String[] args)
 		.limit(20)
 		.forEach(System.out::println);
    
-   //System.out.println(list);
+   System.out.println(list);
   
    //#3
   String[] arrStr = {"apple","cat","cuddle","coin","baber","dog","candy", "cry"};
