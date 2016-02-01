@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="150.0" prefWidth="380.0" styleClass="root" stylesheets="@application.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="assignment10.question2.StringUtilityController">
+   <children>
+      <Button id="btnCountLet" fx:id="btnCountLet" alignment="TOP_LEFT" layoutX="48.0" layoutY="14.0" mnemonicParsing="false" onAction="#handle" prefHeight="30.0" prefWidth="131.0" text="Count Letters" />
+      <Button fx:id="btnReverseLet" alignment="TOP_LEFT" layoutX="48.0" layoutY="52.0" mnemonicParsing="false" onAction="#handle" prefHeight="30.0" prefWidth="131.0" text="Reverse Letters" />
+      <Button fx:id="btnRemoveDup" alignment="TOP_LEFT" layoutX="48.0" layoutY="86.0" mnemonicParsing="false" onAction="#handle" text="Remove Duplicates" />
+      <Label layoutX="198.0" layoutY="22.0" text="Input">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtInput" layoutX="198.0" layoutY="41.0" prefHeight="23.0" prefWidth="141.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="198.0" layoutY="68.0" text="Output">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOutput" layoutX="198.0" layoutY="90.0" prefHeight="23.0" prefWidth="141.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
