@@ -184,7 +184,7 @@ public static void main(String[] args)
   		{
   			if(emp.getLastName().startsWith("B"))
   			{
-  			return new Employee(emp.getFirstName().toUpperCase(),
+  			return new Employee(emp.getFirstName(),
   					emp.getLastName().toUpperCase(),
   					emp.getSalary(),
   					emp.getDepartment());
